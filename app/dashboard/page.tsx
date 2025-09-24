@@ -572,7 +572,7 @@ export default function DashboardPage() {
                       <Button
                         variant="outline"
                         className="w-full"
-                        onClick={() => window.open(company.careersUrl, '_blank')}
+                        onClick={() => window.open(company.careers_url, '_blank')}
                       >
                         <ExternalLink className="h-4 w-4 mr-2" />
                         View Careers

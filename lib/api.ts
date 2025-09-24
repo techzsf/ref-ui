@@ -6,7 +6,7 @@ export interface Company {
   name: string;
   logo: string;
   tags?: string[];
-  careersUrl: string;
+  careers_url: string;
   description?: string;
   industry?: string;
   size?: string;
