@@ -228,29 +228,10 @@ export default function LandingPage() {
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="candidate">Job Seeker (Candidate)</SelectItem>
-                              <SelectItem value="referrer">Company Employee (Referrer)</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
                       </>
-                    )}
-
-                    {formData.role === 'referrer' && (
-                      <div>
-                        <Label htmlFor="company">Company</Label>
-                        <Input
-                          id="company"
-                          name="company"
-                          type="company"
-                          value={formData.company}
-                          onChange={handleChange}
-                          className={`mt-1 ${errors.company ? 'border-red-500' : ''}`}
-                          placeholder="Enter your Company name"
-                        />
-                        {errors.company && (
-                          <p className="mt-1 text-sm text-red-600">{errors.company}</p>
-                        )}
-                      </div>
                     )}
 
                     <div>
