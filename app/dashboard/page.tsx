@@ -556,7 +556,11 @@ export default function DashboardPage() {
                             </Button>
                           </DialogTrigger>
                           <DialogContent className="max-w-2xl">
-                            <ReferralRequestForm company={company} eventId={-1} />
+                            <ReferralRequestForm 
+                              company={company} 
+                              eventId={-1} 
+                              onClose={() => setSelectedCompany(null)}
+                            />
                           </DialogContent>
                         </Dialog>
                       </div>
