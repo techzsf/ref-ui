@@ -384,11 +384,10 @@ export default function DashboardPage() {
                               <DialogContent className="max-w-2xl">
                                 <ReferralRequestForm
                                   company={{
+                                    id: event.id,
                                     name: event.company,
                                     logo: event.logo,
-                                    id: event.id,
-                                    tags: event.tags,
-                                    careersUrl: event.job_url,
+                                    careers_url: event.job_url,
                                   }}
                                   eventId={event.id}
                                   onClose={() => setSelectedReferralEvent(null)}

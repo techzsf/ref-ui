@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Upload, X, Plus } from 'lucide-react';
-import { toast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 import type { Company } from '@/lib/api';
 
 interface ReferralRequestFormProps {
@@ -71,7 +71,7 @@ export default function ReferralRequestForm({
     if (!formData.name) newErrors.name = 'Name is required';
     if (!formData.email) newErrors.email = 'Email is required';
     if (!formData.linkedin) newErrors.linkedin = 'LinkedIn URL is required';
-    if (!formData.jobUrl) newErrors.jobUrl = 'Job URL is required';
+    if (!company.careers_url) newErrors.jobUrl = 'Job URL is required';
     if (!formData.experience) newErrors.experience = 'Experience is required';
     if (formData.skills.length === 0) newErrors.skills = 'At least one skill is required';
     if (!selectedFile) newErrors.resume = 'Resume is required';
@@ -81,6 +81,7 @@ export default function ReferralRequestForm({
     if (Object.keys(newErrors).length === 0) {
       const refObject = {
         ...formData,
+        jobUrl: company.careers_url,
         yoe: formData.experience,
         resume_file_path: 'resume path',
         additional_message: formData.message,
@@ -97,19 +98,11 @@ export default function ReferralRequestForm({
           return res.json();
         })
         .then(data => {
-          toast({
-            title: 'Success',
-            description: 'Referral event created successfully!',
-            variant: 'default',
-          });
+          toast.success('Referral application submitted successfully!');
           if (onClose) onClose();
         })
         .catch(err => {
-          toast({
-            title: 'Error',
-            description: err.message || 'Failed to create referral event.',
-            variant: 'destructive',
-          });
+          toast.error(err.message || 'Failed to submit referral application.');
           if (onClose) onClose();
         });
     }
